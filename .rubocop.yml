@@ -1,0 +1,32 @@
+Layout/Tab:
+  Enabled: false
+Layout/IndentationWidth:
+  Width: 1
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+Layout/MultilineArrayBraceLayout:
+  EnforcedStyle: new_line
+Layout/IndentFirstArrayElement:
+  EnforcedStyle: consistent
+Layout/IndentFirstArgument:
+  EnforcedStyle: consistent
+Layout/FirstArrayElementLineBreak:
+  Enabled: true
+Layout/FirstMethodArgumentLineBreak:
+  Enabled: true
+
+Style/ParenthesesAroundCondition:
+  AllowInMultilineConditions: true
+
+AllCops:
+  TargetRubyVersion: 2.3
+
+Metrics/BlockLength:
+  Exclude:
+    - Rakefile
+    - '*.gemspec'
+    - spec/**/*
