@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
-require 'bundler/setup'
-require 'mtool'
+require 'simplecov'
+SimpleCov.start
+
+require_relative '../lib/mtool'
 
 RSpec.configure do |config|
 	## Disable RSpec exposing methods globally on `Module` and `main`

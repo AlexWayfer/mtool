@@ -34,8 +34,16 @@ Gem::Specification.new do |spec|
 	spec.executables   = spec.files.grep(%r{^exe/}) { |file| File.basename(file) }
 	spec.require_paths = ['lib']
 
+	spec.required_ruby_version = '>= 2.5'
+
+	spec.add_runtime_dependency 'clamp', '~> 1.3'
+	spec.add_runtime_dependency 'diffy', '~> 3.3'
+	spec.add_runtime_dependency 'gorilla_patch', '~> 3.0'
+	spec.add_runtime_dependency 'highline', '~> 2.0'
+
 	spec.add_development_dependency 'bundler', '~> 2.0'
 	spec.add_development_dependency 'rake', '~> 10.0'
 	spec.add_development_dependency 'rspec', '~> 3.0'
 	spec.add_development_dependency 'rubocop', '~> 0.76.0'
+	spec.add_development_dependency 'simplecov', '~> 0.17.1'
 end

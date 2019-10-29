@@ -1,0 +1,56 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'clamp'
+require 'diffy'
+require 'highline'
+
+module MtoolInit
+	## CLI for `mt` init
+	class CLI < Clamp::Command
+		FILENAME = 'mt'
+		SOURCE_FILE = "#{__dir__}/../template/#{FILENAME}"
+
+		def execute
+			@target_file = "#{Dir.pwd}/#{FILENAME}"
+
+			return if File.exist?(@target_file) && !overwrite?
+
+			FileUtils.cp SOURCE_FILE, @target_file
+			puts <<~TEXT
+				'#{File.basename(SOURCE_FILE)}' has been copied to '#{File.dirname(@target_file)}/'
+			TEXT
+		end
+
+		private
+
+		def overwrite?
+			if diff.chomp.empty?
+				puts "#{already_exist_text} and the same, skipping."
+				return false
+			end
+
+			puts <<~TEXT
+				#{already_exist_text}.
+
+				Diff:
+
+				#{diff}
+			TEXT
+
+			HighLine.agree 'Do you want to overwrite it?'
+		end
+
+		def already_exist_text
+			"'#{FILENAME}' file already exists"
+		end
+
+		def diff
+			@diff ||=
+				Diffy::Diff.new(@target_file, SOURCE_FILE, source: 'files').to_s(:color)
+		end
+	end
+end
+
+MtoolInit::CLI.run

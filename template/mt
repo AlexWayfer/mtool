@@ -1,0 +1,5 @@
+#!/bin/sh
+
+CURRENT_DIR=`dirname "$0"`
+
+bundle exec $CURRENT_DIR/mtool/root "$@"

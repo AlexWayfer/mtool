@@ -1,4 +1,4 @@
-# Multitool
+# Mtool
 
 CLI multi-tool with custom sub-commands for any application,
 more comfortable replace of `rake`.
